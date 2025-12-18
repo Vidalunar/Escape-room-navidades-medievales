@@ -138,7 +138,7 @@
         El Candado del Invierno
       </h1>
       <p class="text-base md:text-lg text-white/80 max-w-3xl mx-auto">
-        Solo podéis avanzar si superáis cada prueba. Los códigos no se muestran: debéis deducirlos y guardarlos para el candado final.
+        Solo podéis avanzar si superáis cada prueba. Guardad los códigos para el candado final.
       </p>
 
       <div class="mt-5 inline-flex items-center gap-2 pill rounded-full px-4 py-2 text-sm text-white/85">
@@ -147,16 +147,16 @@
       </div>
     </header>
 
-    <!-- Pistas graduadas -->
+    <!-- Pistas graduadas (sin reglas de código) -->
     <section class="card rounded-2xl p-6 md:p-8 mb-8">
       <h2 class="text-2xl font-bold mb-3 glow">🏠 Pistas (para no bloquearse)</h2>
       <p class="text-white/80 mb-4">
-        “No es un juego de adivinar. Todas las pistas están escritas. Si leéis bien la regla, el código sale solo.”
+        “No es un juego de adivinar. Todas las pistas están escritas. Si leéis bien, el resultado sale solo.”
       </p>
       <ul class="text-white/80 space-y-2">
-        <li><span class="font-semibold">🔹 Pista 1:</span> Leed la regla otra vez.</li>
-        <li><span class="font-semibold">🔹 Pista 2:</span> ¿Os pide contar, convertir a 1/0, sumar aciertos o hacer una resta?</li>
-        <li><span class="font-semibold">🔹 Pista 3:</span> Escribid el resultado en una libreta: lo necesitaréis al final.</li>
+        <li><span class="font-semibold">🔹 Pista 1:</span> Leed con calma y volved a intentarlo.</li>
+        <li><span class="font-semibold">🔹 Pista 2:</span> Fijaos en qué os pide exactamente la actividad.</li>
+        <li><span class="font-semibold">🔹 Pista 3:</span> Apuntad vuestro resultado: lo necesitaréis al final.</li>
       </ul>
     </section>
 
@@ -170,11 +170,6 @@
         <div class="pill rounded-xl px-4 py-2 text-sm text-white/85">
           Estado: <span id="status1" class="font-extrabold">🔓 Activa</span>
         </div>
-      </div>
-
-      <div class="pill rounded-xl p-4 md:p-5 mb-4">
-        <p class="font-semibold mb-2 glow">🔢 Regla del código</p>
-        <p class="text-white/80">Cuenta cuántas afirmaciones son <span class="font-semibold">VERDADERAS</span>. Ese número es el código.</p>
       </div>
 
       <div class="space-y-4">
@@ -223,13 +218,6 @@
         </div>
       </div>
 
-      <div class="pill rounded-xl p-4 md:p-5 mb-4">
-        <p class="font-semibold mb-2 glow">🔢 Regla del código</p>
-        <p class="text-white/80">
-          <span class="font-semibold">Solo en esta prueba</span>: VERDADERO = 1 · FALSO = 0. Escribe el número en orden.
-        </p>
-      </div>
-
       <div class="space-y-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <p class="text-lg">1. Se burlaban de sacerdotes.</p>
@@ -276,11 +264,6 @@
         </div>
       </div>
 
-      <div class="pill rounded-xl p-4 md:p-5 mb-4">
-        <p class="font-semibold mb-2 glow">🔢 Regla del código</p>
-        <p class="text-white/80">Cada respuesta correcta suma 1 punto. Total de puntos = código.</p>
-      </div>
-
       <div class="space-y-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <p class="text-lg">1. Existía la Fiesta de los Locos.</p>
@@ -315,7 +298,7 @@
       </div>
     </section>
 
-    <!-- PRUEBA 4 -->
+    <!-- PRUEBA 4 (+ 2 preguntas extra Edad Moderna) -->
     <section id="test4" class="card rounded-2xl p-6 md:p-8 mb-8 locked">
       <div class="flex items-center justify-between gap-4 mb-4">
         <div>
@@ -325,14 +308,6 @@
         <div class="pill rounded-xl px-4 py-2 text-sm text-white/85">
           Estado: <span id="status4" class="font-extrabold">🔒 Bloqueada</span>
         </div>
-      </div>
-
-      <div class="pill rounded-xl p-4 md:p-5 mb-4">
-        <p class="font-semibold mb-2 glow">🔢 Regla del código</p>
-        <p class="text-white/80">
-          Suma los <span class="font-semibold">VERDADEROS</span> y resta los <span class="font-semibold">FALSOS</span>.
-          El resultado es el código.
-        </p>
       </div>
 
       <div class="space-y-4">
@@ -359,6 +334,24 @@
             <button class="tf-btn" data-test="4" data-q="3" data-val="F">F</button>
           </div>
         </div>
+
+        <!-- EXTRA 1 (Edad Moderna, contrastada) -->
+        <div class="mt-2 pt-2 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <p class="text-lg">4. En 1647, el Parlamento inglés prohibió oficialmente las celebraciones de Navidad.</p>
+          <div class="flex gap-2">
+            <button class="tf-btn" data-test="4" data-q="4" data-val="V">V</button>
+            <button class="tf-btn" data-test="4" data-q="4" data-val="F">F</button>
+          </div>
+        </div>
+
+        <!-- EXTRA 2 (Edad Moderna, contrastada) -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <p class="text-lg">5. En la colonia de la Bahía de Massachusetts (Boston), celebrar la Navidad fue multado y estuvo prohibido durante años (1659–1681).</p>
+          <div class="flex gap-2">
+            <button class="tf-btn" data-test="4" data-q="5" data-val="V">V</button>
+            <button class="tf-btn" data-test="4" data-q="5" data-val="F">F</button>
+          </div>
+        </div>
       </div>
 
       <div class="mt-6 flex flex-col md:flex-row items-center gap-3">
@@ -369,18 +362,18 @@
       </div>
     </section>
 
-    <!-- CANDADO FINAL (solo se habilita al superar las 4) -->
+    <!-- CANDADO FINAL (sin ejemplo visible) -->
     <section id="lockSection" class="card rounded-2xl p-6 md:p-8 locked">
       <h3 class="text-2xl font-bold mb-2 glow">🔒 Candado final</h3>
       <p class="text-white/80 mb-4">
-        Introduce los cuatro códigos en orden (con guiones o sin ellos). Si es correcto, se abrirá el candado.
+        Introduce los códigos en el orden correcto para abrir el candado.
       </p>
 
       <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center">
         <input
           id="lockInput"
           type="text"
-          placeholder="Ej: 2-101-3-1"
+          placeholder=""
           class="w-full md:w-80 px-4 py-3 rounded-xl text-slate-900 font-extrabold"
         />
         <button
@@ -413,15 +406,25 @@
 
   <script>
     // Respuestas correctas (internas)
-    // Mantiene EXACTAMENTE los códigos: 2 - 101 - 3 - 1
+    // Códigos objetivo internos: 2 - 101 - 3 - 1
     const answers = {
-      1: { 1: "V", 2: "V", 3: "F" }, // Verdaderos = 2
-      2: { 1: "V", 2: "F", 3: "V" }, // V=1, F=0 => 101
-      3: { 1: "V", 2: "V", 3: "V" }, // Aciertos = 3
-      4: { 1: "V", 2: "V", 3: "F" }  // 2V - 1F = 1
+      1: { 1: "V", 2: "V", 3: "F" },           // -> 2
+      2: { 1: "V", 2: "F", 3: "V" },           // -> 101
+      3: { 1: "V", 2: "V", 3: "V" },           // -> 3
+      4: { 1: "V", 2: "V", 3: "F", 4:"V", 5:"V"} // extras true/true
+    };
+
+    // Para no alterar el código final, el código se calcula SOLO con las 3 primeras de cada prueba.
+    const codeQuestions = {
+      1: [1,2,3],
+      2: [1,2,3],
+      3: [1,2,3],
+      4: [1,2,3] // las extra aumentan dificultad, pero no cambian el código
     };
 
     const targetCodes = { 1: "2", 2: "101", 3: "3", 4: "1" };
+
+    // Código final fijo (interno): 2-101-3-1
     const finalCodeNormalized = normalizeLockInput("2-101-3-1"); // 210131
 
     const state = {
@@ -449,64 +452,67 @@
     }
 
     function allAnswered(testId){
-      for (let q=1; q<=3; q++){
+      const keys = Object.keys(answers[testId]).map(Number);
+      for (const q of keys){
         if (!state.selections[testId][q]) return false;
       }
       return true;
     }
 
-    function computeCode(testId){
-      // Calcula el código según la regla de cada prueba
-      if (testId === 1){
-        // Nº de verdaderos reales (en la solución)
-        const trueCount = Object.values(answers[1]).filter(v => v === "V").length;
-        return String(trueCount); // 2
-      }
-      if (testId === 2){
-        // En ESTA prueba: V=1, F=0 según la verdad real
-        return Object.values(answers[2]).map(v => v === "V" ? "1" : "0").join(""); // 101
-      }
-      if (testId === 3){
-        // Nº de aciertos del alumno
-        let points = 0;
-        for (let q=1; q<=3; q++){
-          if (state.selections[3][q] === answers[3][q]) points++;
-        }
-        return String(points); // debe llegar a 3
-      }
-      if (testId === 4){
-        // Verdaderos - Falsos reales
-        const trueCount = Object.values(answers[4]).filter(v => v === "V").length;
-        const falseCount = Object.values(answers[4]).filter(v => v === "F").length;
-        return String(trueCount - falseCount); // 1
-      }
-      return "";
-    }
-
     function allCorrect(testId){
-      for (let q=1; q<=3; q++){
+      const keys = Object.keys(answers[testId]).map(Number);
+      for (const q of keys){
         if (state.selections[testId][q] !== answers[testId][q]) return false;
       }
       return true;
     }
 
+    function computeCode(testId){
+      const qs = codeQuestions[testId];
+
+      if (testId === 1){
+        // nº de verdaderos reales
+        const trueCount = qs.map(q => answers[1][q]).filter(v => v === "V").length;
+        return String(trueCount); // 2
+      }
+
+      if (testId === 2){
+        // patrón V/F real convertido (interno)
+        return qs.map(q => answers[2][q] === "V" ? "1" : "0").join(""); // 101
+      }
+
+      if (testId === 3){
+        // nº de aciertos del alumno (en las 3)
+        let points = 0;
+        for (const q of qs){
+          if (state.selections[3][q] === answers[3][q]) points++;
+        }
+        return String(points); // debe llegar a 3
+      }
+
+      if (testId === 4){
+        // verdaderos - falsos reales (solo en las 3 primeras)
+        const trueCount = qs.map(q => answers[4][q]).filter(v => v === "V").length;
+        const falseCount = qs.map(q => answers[4][q]).filter(v => v === "F").length;
+        return String(trueCount - falseCount); // 1
+      }
+
+      return "";
+    }
+
     function unlock(testId){
       const nextId = testId + 1;
 
-      // Marca superada
       state.solved[testId] = true;
       document.getElementById(`status${testId}`).textContent = "✅ Superada";
 
-      // Desbloquear siguiente prueba o candado
       if (nextId <= 4){
         const nextEl = document.getElementById(`test${nextId}`);
         nextEl.classList.remove("locked");
         document.getElementById(`status${nextId}`).textContent = "🔓 Activa";
         document.getElementById("progressLabel").textContent = `Prueba ${nextId}`;
-        // Scroll suave a la siguiente prueba
         setTimeout(() => nextEl.scrollIntoView({ behavior: "smooth", block: "start" }), 250);
       } else {
-        // Desbloquear candado
         const lockEl = document.getElementById("lockSection");
         lockEl.classList.remove("locked");
         document.getElementById("progressLabel").textContent = "Candado final";
@@ -520,48 +526,47 @@
       msg.className = "text-white/90 font-semibold";
 
       if (state.solved[testId]){
-        msg.textContent = "✅ Esta prueba ya está superada. Continúa con la siguiente.";
+        msg.textContent = "✅ Esta prueba ya está superada. Continúa.";
         msg.className = "text-emerald-300 font-extrabold glow";
         return;
       }
 
       if (!allAnswered(testId)){
-        msg.textContent = "⚠️ Responde V/F en las 3 afirmaciones antes de validar.";
+        msg.textContent = "⚠️ Responde V/F en todas las afirmaciones antes de validar.";
         msg.className = "text-amber-300 font-bold glow";
         return;
       }
 
-      // No mostramos el código. Solo validamos si han resuelto correctamente.
-      // Prueba 3 permite feedback de aciertos sin revelar el código final, pero exige 3 para avanzar.
+      // Prueba 3: feedback mínimo sin revelar código
       if (testId === 3){
-        const code = computeCode(3); // puntos
-        if (code === targetCodes[3]){
-          msg.textContent = "✅ Correcto. Avanzáis a la siguiente prueba.";
+        const points = computeCode(3);
+        if (points === targetCodes[3] && allCorrect(3)){
+          msg.textContent = "✅ Correcto. Avanzáis.";
           msg.className = "text-emerald-300 font-extrabold glow";
           unlock(3);
         } else {
-          msg.textContent = `ℹ️ Lleváis ${code}/3 aciertos. Ajustad vuestras respuestas y volved a intentar.`;
+          msg.textContent = `ℹ️ Ajustad respuestas y volved a intentar.`;
           msg.className = "text-sky-200 font-bold glow";
         }
         return;
       }
 
-      // Para 1,2,4: deben estar todas correctas para desbloquear
+      // Para 1,2,4: todo correcto (incluye extras de la 4)
       if (!allCorrect(testId)){
-        msg.textContent = "❌ Hay respuestas incorrectas. Revisad la regla y volved a intentar.";
+        msg.textContent = "❌ Hay respuestas incorrectas. Revisad y volved a intentar.";
         msg.className = "text-red-300 font-bold";
         return;
       }
 
-      // Validación de coherencia (por seguridad)
+      // Seguridad de código interno
       const computed = computeCode(testId);
       if (computed !== targetCodes[testId]){
-        msg.textContent = "❌ Algo no cuadra con la regla. Volved a leer con calma.";
+        msg.textContent = "❌ Algo no cuadra. Volved a leer con calma.";
         msg.className = "text-red-300 font-bold";
         return;
       }
 
-      msg.textContent = "✅ Prueba superada. Guardad el código y avanzad.";
+      msg.textContent = "✅ Prueba superada. Guardad el código y continuad.";
       msg.className = "text-emerald-300 font-extrabold glow";
       unlock(testId);
     }
@@ -571,7 +576,6 @@
       status.textContent = "";
       status.className = "mt-5 text-lg font-bold";
 
-      // Deben haber superado las 4 pruebas
       const allSolved = [1,2,3,4].every(i => state.solved[i]);
       if (!allSolved){
         status.textContent = "⚠️ Aún no podéis abrir el candado. Superad primero las 4 pruebas.";
@@ -598,13 +602,11 @@
 
       document.querySelectorAll(".tf-btn").forEach(b => b.classList.remove("selected"));
 
-      // reset mensajes
       for (let i=1; i<=4; i++){
         document.getElementById(`msg${i}`).textContent = "";
         document.getElementById(`status${i}`).textContent = (i === 1) ? "🔓 Activa" : "🔒 Bloqueada";
       }
 
-      // bloquear 2-4 y candado
       document.getElementById("test2").classList.add("locked");
       document.getElementById("test3").classList.add("locked");
       document.getElementById("test4").classList.add("locked");
@@ -636,7 +638,6 @@
       modal.classList.remove("show");
       clearInterval(confettiTimer);
       confettiTimer = null;
-      // limpiar partículas
       document.querySelectorAll(".burst").forEach(el => el.remove());
     }
 
@@ -651,9 +652,9 @@
         el.textContent = icons[Math.floor(Math.random() * icons.length)];
 
         const left = Math.random() * 100;
-        const dur = 2.2 + Math.random() * 2.2;      // 2.2 - 4.4 s
-        const size = 16 + Math.random() * 26;       // 16 - 42 px
-        const delay = Math.random() * 0.25;         // pequeña aleatoriedad
+        const dur = 2.2 + Math.random() * 2.2;
+        const size = 16 + Math.random() * 26;
+        const delay = Math.random() * 0.25;
 
         el.style.left = left + "vw";
         el.style.animationDuration = dur + "s";
@@ -661,13 +662,9 @@
         el.style.fontSize = size + "px";
 
         modal.appendChild(el);
-
-        // cleanup
         setTimeout(() => el.remove(), (dur + delay) * 1000 + 200);
       }
     }
   </script>
 </body>
 </html>
-
- 
