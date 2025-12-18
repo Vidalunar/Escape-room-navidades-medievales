@@ -7,26 +7,66 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .glow {
+      text-shadow:
+        0 0 10px rgba(255,255,255,.25),
+        0 0 20px rgba(56,189,248,.18),
+        0 0 40px rgba(16,185,129,.10);
+    }
+    .glow-strong {
+      text-shadow:
+        0 0 10px rgba(255,255,255,.35),
+        0 0 24px rgba(56,189,248,.24),
+        0 0 60px rgba(16,185,129,.14);
+    }
+    .card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+    .pill {
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .tf-btn{
+      padding: .55rem 1.1rem;
+      border-radius: 1rem;
+      font-weight: 900;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      min-width: 56px;
+    }
+    .tf-btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.12); }
+    .tf-btn.selected{
+      background: rgba(16,185,129,.95);
+      border-color: rgba(110,231,183,.9);
+      color: #071a12;
+      box-shadow: 0 0 22px rgba(16,185,129,.25);
+    }
+  </style>
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-emerald-950 text-white relative">
+<body class="min-h-screen bg-gradient-to-br from-black via-slate-950 to-emerald-950 text-white relative">
 
-  <!-- SELLO -->
+  <!-- SELLO (arriba derecha) -->
   <img
     src="pr-sello.png"
     alt="Sello Patricia Romero Educación"
-    class="absolute top-4 left-4 w-20 md:w-28 drop-shadow-lg opacity-95"
+    class="absolute top-4 right-4 w-20 md:w-28 drop-shadow-lg opacity-95"
   />
 
   <main class="max-w-5xl mx-auto px-4 pt-24 pb-16">
     <!-- Header -->
     <header class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 mb-5">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full pill mb-5">
         <span class="text-xl">🎄</span>
-        <span class="text-sm md:text-base text-white/90">Escape Room · Navidades Medievales</span>
+        <span class="text-sm md:text-base text-white/90 glow">Escape Room · Navidades Medievales</span>
       </div>
 
-      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3 glow-strong">
         El Candado del Invierno
       </h1>
       <p class="text-base md:text-lg text-white/80 max-w-3xl mx-auto">
@@ -35,15 +75,15 @@
     </header>
 
     <!-- Pistas graduadas -->
-    <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl mb-8">
-      <h2 class="text-2xl font-bold mb-3">🏠 Pistas (para no bloquearse)</h2>
+    <section class="card rounded-2xl p-6 md:p-8 mb-8">
+      <h2 class="text-2xl font-bold mb-3 glow">🏠 Pistas (para no bloquearse)</h2>
       <p class="text-white/80 mb-4">
         “No es un juego de adivinar. Todas las pistas están escritas. Si leéis bien la regla, el código sale solo.”
       </p>
       <ul class="text-white/80 space-y-2">
         <li><span class="font-semibold">🔹 Pista 1:</span> Leed la regla otra vez.</li>
-        <li><span class="font-semibold">🔹 Pista 2:</span> ¿Cuántos verdaderos hay?</li>
-        <li><span class="font-semibold">🔹 Pista 3:</span> ¿Qué número sale si V=1?</li>
+        <li><span class="font-semibold">🔹 Pista 2:</span> Fijaos en qué os pide exactamente (contar, sumar, restar, convertir a 1/0…).</li>
+        <li><span class="font-semibold">🔹 Pista 3:</span> Si hay V=1 y F=0, convertid las respuestas a números en el orden correcto.</li>
       </ul>
     </section>
 
@@ -51,20 +91,22 @@
     <div class="grid gap-6">
 
       <!-- PRUEBA 1 -->
-      <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+      <section class="card rounded-2xl p-6 md:p-8">
+        <div class="flex items-center justify-between gap-4 mb-4">
           <div>
-            <h3 class="text-2xl font-bold">🧩 Prueba 1 · La ciudad en caos</h3>
+            <h3 class="text-2xl font-bold glow">🧩 Prueba 1 · La ciudad en caos</h3>
             <p class="text-white/80 mt-1">📜 Contexto: La ciudad teme disturbios durante la Navidad.</p>
           </div>
-          <div class="text-sm text-white/80 bg-black/20 border border-white/10 rounded-xl px-4 py-2">
-            Código obtenido: <span id="code1Badge" class="font-bold text-white">—</span>
+          <div class="pill rounded-xl px-4 py-2 text-sm text-white/85">
+            Código: <span id="code1Badge" class="font-extrabold glow">—</span>
           </div>
         </div>
 
-        <div class="bg-black/20 border border-white/10 rounded-xl p-4 md:p-5 mb-4">
-          <p class="font-semibold mb-2">🔢 Regla del código</p>
-          <p class="text-white/80">Cuenta cuántas respuestas son <span class="font-semibold">VERDADERAS</span>. Ese número es el código.</p>
+        <div class="pill rounded-xl p-4 md:p-5 mb-4">
+          <p class="font-semibold mb-2 glow">🔢 Regla del código (Prueba 1)</p>
+          <p class="text-white/80">
+            Cuenta cuántas afirmaciones son <span class="font-semibold">VERDADERAS</span>. Ese número es el código.
+          </p>
         </div>
 
         <div class="space-y-4">
@@ -94,7 +136,7 @@
         </div>
 
         <div class="mt-6 flex flex-col md:flex-row items-center gap-3">
-          <button onclick="checkTest(1)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-semibold w-full md:w-auto">
+          <button onclick="checkTest(1)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-extrabold w-full md:w-auto glow">
             Comprobar prueba 1
           </button>
           <div id="msg1" class="text-white/90 font-semibold"></div>
@@ -102,20 +144,23 @@
       </section>
 
       <!-- PRUEBA 2 -->
-      <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+      <section class="card rounded-2xl p-6 md:p-8">
+        <div class="flex items-center justify-between gap-4 mb-4">
           <div>
-            <h3 class="text-2xl font-bold">🧩 Prueba 2 · Fiestas prohibidas</h3>
+            <h3 class="text-2xl font-bold glow">🧩 Prueba 2 · Fiestas prohibidas</h3>
             <p class="text-white/80 mt-1">📜 Contexto: Algunas fiestas eran mal vistas por la Iglesia.</p>
           </div>
-          <div class="text-sm text-white/80 bg-black/20 border border-white/10 rounded-xl px-4 py-2">
-            Código obtenido: <span id="code2Badge" class="font-bold text-white">—</span>
+          <div class="pill rounded-xl px-4 py-2 text-sm text-white/85">
+            Código: <span id="code2Badge" class="font-extrabold glow">—</span>
           </div>
         </div>
 
-        <div class="bg-black/20 border border-white/10 rounded-xl p-4 md:p-5 mb-4">
-          <p class="font-semibold mb-2">🔢 Regla del código</p>
-          <p class="text-white/80">VERDADERO = 1 · FALSO = 0 · Escribe el número en orden.</p>
+        <div class="pill rounded-xl p-4 md:p-5 mb-4">
+          <p class="font-semibold mb-2 glow">🔢 Regla del código (Prueba 2)</p>
+          <p class="text-white/80">
+            <span class="font-semibold">En esta prueba</span>: VERDADERO = 1 · FALSO = 0.
+            Escribe el número en orden (ej.: V, F, V → 101).
+          </p>
         </div>
 
         <div class="space-y-4">
@@ -145,7 +190,7 @@
         </div>
 
         <div class="mt-6 flex flex-col md:flex-row items-center gap-3">
-          <button onclick="checkTest(2)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-semibold w-full md:w-auto">
+          <button onclick="checkTest(2)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-extrabold w-full md:w-auto glow">
             Comprobar prueba 2
           </button>
           <div id="msg2" class="text-white/90 font-semibold"></div>
@@ -153,19 +198,19 @@
       </section>
 
       <!-- PRUEBA 3 -->
-      <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+      <section class="card rounded-2xl p-6 md:p-8">
+        <div class="flex items-center justify-between gap-4 mb-4">
           <div>
-            <h3 class="text-2xl font-bold">🧩 Prueba 3 · El mundo al revés</h3>
+            <h3 class="text-2xl font-bold glow">🧩 Prueba 3 · El mundo al revés</h3>
             <p class="text-white/80 mt-1">📜 Contexto: En Navidad se rompía el orden social.</p>
           </div>
-          <div class="text-sm text-white/80 bg-black/20 border border-white/10 rounded-xl px-4 py-2">
-            Código obtenido: <span id="code3Badge" class="font-bold text-white">—</span>
+          <div class="pill rounded-xl px-4 py-2 text-sm text-white/85">
+            Código: <span id="code3Badge" class="font-extrabold glow">—</span>
           </div>
         </div>
 
-        <div class="bg-black/20 border border-white/10 rounded-xl p-4 md:p-5 mb-4">
-          <p class="font-semibold mb-2">🔢 Regla del código</p>
+        <div class="pill rounded-xl p-4 md:p-5 mb-4">
+          <p class="font-semibold mb-2 glow">🔢 Regla del código (Prueba 3)</p>
           <p class="text-white/80">Cada respuesta correcta suma 1 punto. Total de puntos = código.</p>
         </div>
 
@@ -196,7 +241,7 @@
         </div>
 
         <div class="mt-6 flex flex-col md:flex-row items-center gap-3">
-          <button onclick="checkTest(3)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-semibold w-full md:w-auto">
+          <button onclick="checkTest(3)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-extrabold w-full md:w-auto glow">
             Comprobar prueba 3
           </button>
           <div id="msg3" class="text-white/90 font-semibold"></div>
@@ -204,20 +249,23 @@
       </section>
 
       <!-- PRUEBA 4 -->
-      <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+      <section class="card rounded-2xl p-6 md:p-8">
+        <div class="flex items-center justify-between gap-4 mb-4">
           <div>
-            <h3 class="text-2xl font-bold">🧩 Prueba 4 · El juicio final</h3>
+            <h3 class="text-2xl font-bold glow">🧩 Prueba 4 · El juicio final</h3>
             <p class="text-white/80 mt-1">📜 Contexto: Las autoridades deciden si sois culpables.</p>
           </div>
-          <div class="text-sm text-white/80 bg-black/20 border border-white/10 rounded-xl px-4 py-2">
-            Código obtenido: <span id="code4Badge" class="font-bold text-white">—</span>
+          <div class="pill rounded-xl px-4 py-2 text-sm text-white/85">
+            Código: <span id="code4Badge" class="font-extrabold glow">—</span>
           </div>
         </div>
 
-        <div class="bg-black/20 border border-white/10 rounded-xl p-4 md:p-5 mb-4">
-          <p class="font-semibold mb-2">🔢 Regla del código</p>
-          <p class="text-white/80">Suma los VERDADEROS y resta los FALSOS. El resultado es el código.</p>
+        <div class="pill rounded-xl p-4 md:p-5 mb-4">
+          <p class="font-semibold mb-2 glow">🔢 Regla del código (Prueba 4)</p>
+          <p class="text-white/80">
+            Suma los <span class="font-semibold">VERDADEROS</span> y resta los <span class="font-semibold">FALSOS</span>.
+            El resultado es el código.
+          </p>
         </div>
 
         <div class="space-y-4">
@@ -247,7 +295,7 @@
         </div>
 
         <div class="mt-6 flex flex-col md:flex-row items-center gap-3">
-          <button onclick="checkTest(4)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-semibold w-full md:w-auto">
+          <button onclick="checkTest(4)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-extrabold w-full md:w-auto glow">
             Comprobar prueba 4
           </button>
           <div id="msg4" class="text-white/90 font-semibold"></div>
@@ -255,10 +303,12 @@
       </section>
 
       <!-- CANDADO FINAL -->
-      <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
-        <h3 class="text-2xl font-bold mb-2">🔒 Candado final</h3>
+      <section class="card rounded-2xl p-6 md:p-8">
+        <h3 class="text-2xl font-bold mb-2 glow">🔒 Candado final</h3>
         <p class="text-white/80 mb-4">
-          Introduce los cuatro códigos en orden. Puedes escribirlos con guiones (2-101-3-1) o sin espacios (210131).
+          Introduce los cuatro códigos en orden:
+          <span class="font-extrabold glow">2-101-3-1</span>.
+          Puedes escribirlos con guiones o sin ellos.
         </p>
 
         <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center">
@@ -266,11 +316,11 @@
             id="lockInput"
             type="text"
             placeholder="Ej: 2-101-3-1"
-            class="w-full md:w-80 px-4 py-3 rounded-xl text-slate-900 font-semibold"
+            class="w-full md:w-80 px-4 py-3 rounded-xl text-slate-900 font-extrabold"
           />
           <button
             onclick="openLock()"
-            class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold shadow-lg transition"
+            class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold shadow-lg transition glow"
           >
             Abrir candado
           </button>
@@ -284,10 +334,12 @@
 
         <div id="lockStatus" class="mt-5 text-lg font-bold"></div>
 
-        <div class="mt-6 bg-black/20 border border-white/10 rounded-xl p-4">
+        <div class="mt-6 pill rounded-xl p-4">
           <p class="text-sm text-white/70">
             Códigos conseguidos:
-            <span class="font-semibold text-white" id="codesSummary">Prueba 1: — · Prueba 2: — · Prueba 3: — · Prueba 4: —</span>
+            <span class="font-semibold text-white glow" id="codesSummary">
+              Prueba 1: — · Prueba 2: — · Prueba 3: — · Prueba 4: —
+            </span>
           </p>
         </div>
       </section>
@@ -295,42 +347,42 @@
     </div>
   </main>
 
-  <style>
-    .tf-btn{
-      @apply px-4 py-2 rounded-xl font-extrabold bg-white/10 border border-white/15 hover:bg-white/15 transition min-w-[56px];
-    }
-    .tf-btn.selected{
-      @apply bg-emerald-500 border-emerald-300 text-slate-950;
-    }
-  </style>
-
   <script>
-    // Respuestas correctas (NO se muestran al alumnado)
+    // Respuestas correctas (internas)
+    // Prueba 1: V, V, F -> código 2 (por nº de verdaderos)
+    // Prueba 2: V, F, V -> código 101 (V=1, F=0 en ESTA prueba)
+    // Prueba 3: V, V, V -> 3 aciertos -> código 3
+    // Prueba 4: V, V, F -> 2V - 1F = 1
     const answers = {
-      1: { 1: "V", 2: "V", 3: "F" }, // Código 2
-      2: { 1: "V", 2: "F", 3: "V" }, // Código 101
-      3: { 1: "V", 2: "V", 3: "F" }, // 3 aciertos -> código 2? (OJO: aquí queremos 3, por tanto todas correctas)
-      4: { 1: "V", 2: "V", 3: "F" }  // 2V - 1F = 1
+      1: { 1: "V", 2: "V", 3: "F" },
+      2: { 1: "V", 2: "F", 3: "V" },
+      3: { 1: "V", 2: "V", 3: "V" },
+      4: { 1: "V", 2: "V", 3: "F" }
     };
 
-    // Ajuste para que la Prueba 3 sea "3 aciertos" tal y como pides:
-    // (Si quieres cambiarlo, modifica este bloque.)
-    answers[3] = { 1: "V", 2: "V", 3: "V" }; // 3 aciertos -> código 3
-
-    // Códigos objetivo
     const targetCodes = { 1: "2", 2: "101", 3: "3", 4: "1" };
+    const finalCodeNormalized = normalizeLockInput("2-101-3-1"); // 210131
 
-    // Estado
     const state = {
-      selections: {
-        1: {}, 2: {}, 3: {}, 4: {}
-      },
-      solvedCodes: {
-        1: null, 2: null, 3: null, 4: null
-      }
+      selections: { 1: {}, 2: {}, 3: {}, 4: {} },
+      solvedCodes: { 1: null, 2: null, 3: null, 4: null }
     };
 
-    // UI helpers
+    // Selección V/F
+    document.querySelectorAll(".tf-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const testId = btn.dataset.test;
+        const q = btn.dataset.q;
+        const val = btn.dataset.val;
+
+        state.selections[testId][q] = val;
+
+        const siblings = document.querySelectorAll(`.tf-btn[data-test="${testId}"][data-q="${q}"]`);
+        siblings.forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+      });
+    });
+
     function updateSummary(){
       const s = document.getElementById("codesSummary");
       s.textContent = `Prueba 1: ${state.solvedCodes[1] ?? "—"} · Prueba 2: ${state.solvedCodes[2] ?? "—"} · Prueba 3: ${state.solvedCodes[3] ?? "—"} · Prueba 4: ${state.solvedCodes[4] ?? "—"}`;
@@ -341,105 +393,91 @@
       updateSummary();
     }
 
-    // Botones V/F: seleccionar y marcar visualmente
-    document.querySelectorAll(".tf-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const testId = btn.dataset.test;
-        const q = btn.dataset.q;
-        const val = btn.dataset.val;
+    function allAnswered(testId){
+      for (let q=1; q<=3; q++){
+        if (!state.selections[testId][q]) return false;
+      }
+      return true;
+    }
 
-        // Guardar selección
-        state.selections[testId][q] = val;
-
-        // Quitar selected de los hermanos (V/F del mismo ítem)
-        const siblings = document.querySelectorAll(`.tf-btn[data-test="${testId}"][data-q="${q}"]`);
-        siblings.forEach(b => b.classList.remove("selected"));
-        btn.classList.add("selected");
-      });
-    });
+    function allCorrect(testId){
+      for (let q=1; q<=3; q++){
+        if (state.selections[testId][q] !== answers[testId][q]) return false;
+      }
+      return true;
+    }
 
     function checkTest(testId){
       const msg = document.getElementById(`msg${testId}`);
       msg.textContent = "";
       msg.className = "text-white/90 font-semibold";
 
-      // Verificar que están todas respondidas (3 preguntas por prueba)
-      for (let q=1; q<=3; q++){
-        if (!state.selections[testId][q]){
-          msg.textContent = "⚠️ Responde V/F en las 3 afirmaciones antes de comprobar.";
-          msg.className = "text-amber-300 font-bold";
-          return;
-        }
+      if (!allAnswered(testId)){
+        msg.textContent = "⚠️ Responde V/F en las 3 afirmaciones antes de comprobar.";
+        msg.className = "text-amber-300 font-bold glow";
+        return;
       }
 
-      // Calcular código según regla
       let code = "";
 
+      // PRUEBA 1: código = nº de verdaderos (en la realidad). Solo se entrega si todo está correcto.
       if (testId === 1){
-        // Cuenta verdaderos correctos (según respuestas correctas)
-        let correctTrueCount = 0;
-        for (let q=1; q<=3; q++){
-          const isCorrect = state.selections[testId][q] === answers[testId][q];
-          if (isCorrect && answers[testId][q] === "V") correctTrueCount++;
-        }
-        code = String(correctTrueCount);
-      }
-
-      if (testId === 2){
-        // V=1, F=0 según acierto/fallo? Aquí debe ser según si la afirmación es verdadera en realidad.
-        // Por tanto, convertimos la "verdad real" (answers) a 1/0, independientemente de lo que elijan.
-        // Pero deben acertar el patrón eligiendo V/F correcto. Si fallan, no se concede código.
-        let allCorrect = true;
-        let bits = "";
-        for (let q=1; q<=3; q++){
-          if (state.selections[testId][q] !== answers[testId][q]) allCorrect = false;
-          bits += (answers[testId][q] === "V") ? "1" : "0";
-        }
-        code = bits;
-        if (!allCorrect){
-          msg.textContent = "❌ Algunas respuestas no son correctas. Revisa y vuelve a intentar.";
-          msg.className = "text-red-300 font-bold";
-          return;
-        }
-      }
-
-      if (testId === 3){
-        // Puntos = nº de aciertos
-        let points = 0;
-        for (let q=1; q<=3; q++){
-          if (state.selections[testId][q] === answers[testId][q]) points++;
-        }
-        code = String(points);
-      }
-
-      if (testId === 4){
-        // Suma V correctos y resta F correctos -> equivale a (Vcorrect - Fcorrect) si todo está correcto.
-        // En tu ejemplo: 2V-1F = 1. Para mantenerlo pedagógico: solo damos código si todo correcto.
-        let allCorrect = true;
-        let trueCount = 0;
-        let falseCount = 0;
-
-        for (let q=1; q<=3; q++){
-          if (state.selections[testId][q] !== answers[testId][q]) allCorrect = false;
-          if (answers[testId][q] === "V") trueCount++;
-          else falseCount++;
-        }
-
-        code = String(trueCount - falseCount);
-
-        if (!allCorrect){
+        if (!allCorrect(1)){
           msg.textContent = "❌ Hay respuestas incorrectas. Revisa y vuelve a intentar.";
           msg.className = "text-red-300 font-bold";
           return;
         }
+        const trueCount = Object.values(answers[1]).filter(v => v === "V").length; // 2
+        code = String(trueCount);
       }
 
-      // Validación final del código con el objetivo esperado
+      // PRUEBA 2: SOLO en esta prueba V=1 y F=0 (en la realidad). Se entrega si todo está correcto.
+      if (testId === 2){
+        if (!allCorrect(2)){
+          msg.textContent = "❌ Algunas respuestas no son correctas. Revisa y vuelve a intentar.";
+          msg.className = "text-red-300 font-bold";
+          return;
+        }
+        code = Object.values(answers[2]).map(v => v === "V" ? "1" : "0").join(""); // 101
+      }
+
+      // PRUEBA 3: código = nº de aciertos (se puede ver progreso), pero solo se guarda si llega a 3.
+      if (testId === 3){
+        let points = 0;
+        for (let q=1; q<=3; q++){
+          if (state.selections[3][q] === answers[3][q]) points++;
+        }
+        code = String(points);
+
+        if (code !== targetCodes[3]){
+          msg.textContent = `ℹ️ Lleváis ${points}/3 aciertos. El código solo será ${targetCodes[3]} cuando tengáis los 3 correctos.`;
+          msg.className = "text-sky-200 font-bold glow";
+          // No guardamos aún
+          setBadge(3, "—");
+          state.solvedCodes[3] = null;
+          updateSummary();
+          return;
+        }
+      }
+
+      // PRUEBA 4: código = (nºV - nºF) en la realidad. Se entrega si todo está correcto.
+      if (testId === 4){
+        if (!allCorrect(4)){
+          msg.textContent = "❌ Hay respuestas incorrectas. Revisa y vuelve a intentar.";
+          msg.className = "text-red-300 font-bold";
+          return;
+        }
+        const trueCount = Object.values(answers[4]).filter(v => v === "V").length;  // 2
+        const falseCount = Object.values(answers[4]).filter(v => v === "F").length; // 1
+        code = String(trueCount - falseCount); // 1
+      }
+
+      // Validación objetivo
       if (code === targetCodes[testId]){
         state.solvedCodes[testId] = code;
         setBadge(testId, code);
         msg.textContent = `✅ Prueba superada. Código obtenido: ${code}`;
-        msg.className = "text-emerald-300 font-bold";
+        msg.className = "text-emerald-300 font-extrabold glow";
       } else {
         msg.textContent = "❌ El código no coincide. Revisa la regla y las respuestas.";
         msg.className = "text-red-300 font-bold";
@@ -447,44 +485,37 @@
     }
 
     function normalizeLockInput(str){
-      return str.replace(/\s+/g, "").replace(/-/g, "");
+      return (str || "").replace(/\s+/g, "").replace(/-/g, "");
     }
 
     function openLock(){
       const status = document.getElementById("lockStatus");
       status.textContent = "";
 
-      // Exigimos que hayan superado las 4 pruebas
       const missing = Object.values(state.solvedCodes).some(v => v === null);
       if (missing){
         status.textContent = "⚠️ Aún faltan códigos. Supera las 4 pruebas antes de abrir el candado.";
-        status.className = "mt-5 text-amber-300 text-lg font-bold";
+        status.className = "mt-5 text-amber-300 text-lg font-extrabold glow";
         return;
       }
 
       const input = document.getElementById("lockInput").value;
       const normalized = normalizeLockInput(input);
 
-      const correct = normalizeLockInput("2-101-3-1"); // 210131
-
-      if (normalized === correct){
-        status.textContent = "🎉 Enhorabuena, lo has conseguido. El candado se abre.";
-        status.className = "mt-5 text-emerald-300 text-lg font-extrabold";
+      if (normalized === finalCodeNormalized){
+        status.textContent = "🎉 Enhorabuena, lo has conseguido.";
+        status.className = "mt-5 text-emerald-300 text-lg font-extrabold glow-strong";
       } else {
-        status.textContent = "❌ El candado no se abre. Revisa el orden de los códigos.";
+        status.textContent = "❌ El candado no se abre. Asegúrate de introducir 2-101-3-1 en ese orden.";
         status.className = "mt-5 text-red-300 text-lg font-bold";
       }
     }
 
     function resetAll(){
-      // reset estado
       state.selections = { 1: {}, 2: {}, 3: {}, 4: {} };
       state.solvedCodes = { 1: null, 2: null, 3: null, 4: null };
 
-      // reset UI selections
       document.querySelectorAll(".tf-btn").forEach(b => b.classList.remove("selected"));
-
-      // reset badges & messages
       for (let i=1; i<=4; i++){
         document.getElementById(`msg${i}`).textContent = "";
         setBadge(i, null);
@@ -496,7 +527,7 @@
       status.className = "mt-5 text-lg font-bold";
     }
 
-    // init summary
+    // init
     updateSummary();
   </script>
 </body>
