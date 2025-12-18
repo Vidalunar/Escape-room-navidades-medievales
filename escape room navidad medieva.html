@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Juego de Ciudades</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+<body class="bg-gradient-to-br from-blue-700 to-indigo-900 min-h-screen flex flex-col items-center text-white relative">
+
+  <!-- SELLO -->
+  <img 
+    src="pr-sello.png" 
+    alt="Sello Patricia Romero Educación"
+    class="absolute top-4 left-4 w-24 md:w-32 drop-shadow-lg"
+  />
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="max-w-4xl w-full px-4 pt-28 pb-10 text-center">
+
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">
+      🌍 Juego de Ciudades
+    </h1>
+
+    <p class="text-lg mb-6 text-blue-100">
+      Haz clic en la ciudad correcta según la pista.
+    </p>
+
+    <!-- PREGUNTA -->
+    <div id="question" class="text-2xl md:text-3xl font-semibold mb-8">
+      ¿Cuál es la capital de Francia?
+    </div>
+
+    <!-- OPCIONES -->
+    <div id="options" class="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- JS genera las opciones -->
+    </div>
+
+    <!-- MENSAJE -->
+    <div id="message" class="mt-8 text-2xl font-bold"></div>
+
+    <!-- BOTÓN -->
+    <button 
+      onclick="nextQuestion()" 
+      class="mt-8 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-lg rounded-xl shadow-lg transition">
+      Siguiente
+    </button>
+
+  </div>
+
+  <!-- INSTRUCCIONES -->
+  <footer class="text-sm text-blue-200 pb-6 text-center">
+    <p class="mb-1">📂 Para jugar:</p>
+    <p>1. Guarda este archivo como <strong>juego-ciudades.html</strong></p>
+    <p>2. Guarda el sello como <strong>pr-sello.png</strong> en la misma carpeta</p>
+    <p>3. Haz <strong>doble clic</strong> en el archivo para abrirlo</p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const questions = [
+      {
+        question: "¿Cuál es la capital de Francia?",
+        answer: "París",
+        options: [
+          { name: "París", emoji: "🗼" },
+          { name: "Roma", emoji: "🏛️" },
+          { name: "Madrid", emoji: "🏰" }
+        ]
+      },
+      {
+        question: "¿Cuál es la capital de Japón?",
+        answer: "Tokio",
+        options: [
+          { name: "Seúl", emoji: "🏯" },
+          { name: "Pekín", emoji: "🏮" },
+          { name: "Tokio", emoji: "🗾" }
+        ]
+      },
+      {
+        question: "¿Cuál es la capital de España?",
+        answer: "Madrid",
+        options: [
+          { name: "Barcelona", emoji: "🏖️" },
+          { name: "Madrid", emoji: "🏰" },
+          { name: "Sevilla", emoji: "💃" }
+        ]
+      }
+    ];
+
+    let current = 0;
+
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const messageEl = document.getElementById("message");
+
+    function loadQuestion() {
+      const q = questions[current];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = "";
+      messageEl.textContent = "";
+
+      q.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className = "bg-white text-gray-900 rounded-2xl p-6 text-5xl shadow-xl hover:scale-105 transition flex flex-col items-center";
+        btn.innerHTML = `<span>${opt.emoji}</span><span class="text-lg mt-2">${opt.name}</span>`;
+        btn.onclick = () => checkAnswer(opt.name);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      if (selected === questions[current].answer) {
+        messageEl.textContent = "✅ ¡Correcto!";
+        messageEl.className = "mt-8 text-2xl font-bold text-emerald-400";
+      } else {
+        messageEl.textContent = "❌ Intenta de nuevo";
+        messageEl.className = "mt-8 text-2xl font-bold text-red-400";
+      }
+    }
+
+    function nextQuestion() {
+      current = (current + 1) % questions.length;
+      loadQuestion();
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
