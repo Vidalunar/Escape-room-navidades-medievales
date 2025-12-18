@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Escape Room de Navidad</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body class="bg-gradient-to-br from-slate-900 via-indigo-900 to-emerald-900 min-h-screen flex flex-col items-center text-white relative">
+
+  <!-- SELLO (debe estar en la misma carpeta que index.html) -->
+  <img
+    src="pr-sello.png"
+    alt="Sello Patricia Romero Educación"
+    class="absolute top-4 left-4 w-20 md:w-28 drop-shadow-lg opacity-95"
+  />
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="max-w-4xl w-full px-4 pt-24 pb-10 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 mb-6">
+      <span class="text-xl">🎄</span>
+      <span class="text-sm md:text-base text-white/90">Escape Room de Navidad</span>
+    </div>
+
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
+      Misión: Salvar la Navidad
+    </h1>
+
+    <p class="text-base md:text-lg text-white/80 mb-8">
+      Resuelve los retos. Cada acierto te acerca al código final.
+    </p>
+
+    <!-- TARJETA -->
+    <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
+      <div class="text-sm text-white/70 mb-2" id="progress">Reto 1 de 3</div>
+
+      <div id="question" class="text-2xl md:text-3xl font-semibold mb-6">
+        Cargando reto...
+      </div>
+
+      <div id="options" class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <!-- JS genera las opciones -->
+      </div>
+
+      <div id="message" class="mt-6 text-xl font-bold"></div>
+
+      <div class="mt-8 flex flex-col md:flex-row items-center justify-center gap-3">
+        <button
+          onclick="nextQuestion()"
+          class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-base md:text-lg rounded-xl shadow-lg transition">
+          Siguiente reto
+        </button>
+
+        <button
+          onclick="restartGame()"
+          class="px-6 py-3 bg-white/10 hover:bg-white/15 border border-white/15 text-base md:text-lg rounded-xl shadow-lg transition">
+          Reiniciar
+        </button>
+      </div>
+    </section>
+
+    <!-- CÓDIGO FINAL -->
+    <section id="final" class="hidden mt-8 bg-white/10 border border-white/15 rounded-2xl p-6 shadow-2xl">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">🎁 Código final</h2>
+      <p class="text-white/80 mb-4">
+        Une las piezas conseguidas en cada reto (en orden). Ese es el código para abrir el “regalo”.
+      </p>
+      <div class="text-4xl font-black tracking-widest bg-black/30 rounded-xl py-4" id="finalCode">
+        ----
+      </div>
+      <p class="text-sm text-white/70 mt-4">
+        Consejo: Si quieres, puedes cambiar las piezas del código en el array <code>codePieces</code>.
+      </p>
+    </section>
+
+    <p class="text-xs md:text-sm text-white/60 mt-8">
+      Si ves 404 en GitHub Pages, casi siempre es porque no existía <strong>index.html</strong> en la raíz del repo.
+    </p>
+  </main>
+
+  <script>
+    // Puedes cambiar las piezas del código final aquí:
+    const codePieces = ["N", "A", "V", "I"]; // Ejemplo: NAVI
+
+    const questions = [
+      {
+        question: "Reto 1: ¿Qué país se asocia con San Nicolás (origen de Santa Claus)?",
+        answer: "Países Bajos",
+        options: [
+          { name: "España", emoji: "🇪🇸" },
+          { name: "Países Bajos", emoji: "🇳🇱" },
+          { name: "Japón", emoji: "🇯🇵" }
+        ],
+        pieceIndex: 0
+      },
+      {
+        question: "Reto 2: ¿Qué día se celebra la Nochebuena?",
+        answer: "24 de diciembre",
+        options: [
+          { name: "31 de diciembre", emoji: "🎆" },
+          { name: "24 de diciembre", emoji: "🕯️" },
+          { name: "6 de enero", emoji: "👑" }
+        ],
+        pieceIndex: 1
+      },
+      {
+        question: "Reto 3: ¿Qué bebida caliente es típica en Navidad en muchos países?",
+        answer: "Chocolate caliente",
+        options: [
+          { name: "Gazpacho", emoji: "🥣" },
+          { name: "Chocolate caliente", emoji: "☕" },
+          { name: "Limonada", emoji: "🍋" }
+        ],
+        pieceIndex: 2
+      }
+    ];
+
+    let current = 0;
+    const collected = [];
+
+    const questionEl = document.getElementById("question");
+    const optionsEl  = document.getElementById("options");
+    const messageEl  = document.getElementById("message");
+    const progressEl = document.getElementById("progress");
+    const finalEl    = document.getElementById("final");
+    const finalCodeEl= document.getElementById("finalCode");
+
+    function loadQuestion() {
+      finalEl.classList.add("hidden");
+      messageEl.textContent = "";
+      messageEl.className = "mt-6 text-xl font-bold";
+
+      const q = questions[current];
+      progressEl.textContent = `Reto ${current + 1} de ${questions.length}`;
+      questionEl.textContent = q.question;
+
+      optionsEl.innerHTML = "";
+      q.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className =
+          "bg-white text-gray-900 rounded-2xl p-4 md:p-6 text-4xl md:text-5xl shadow-xl hover:scale-[1.03] transition flex flex-col items-center";
+        btn.innerHTML = `<span>${opt.emoji}</span><span class="text-base md:text-lg mt-2">${opt.name}</span>`;
+        btn.onclick = () => checkAnswer(opt.name);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      const q = questions[current];
+
+      if (selected === q.answer) {
+        messageEl.textContent = `✅ Correcto. Has ganado la pieza: "${codePieces[q.pieceIndex]}"`;
+        messageEl.className = "mt-6 text-xl font-bold text-emerald-300";
+
+        // guarda pieza si no estaba
+        if (!collected.includes(q.pieceIndex)) collected.push(q.pieceIndex);
+
+      } else {
+        messageEl.textContent = "❌ Intenta de nuevo";
+        messageEl.className = "mt-6 text-xl font-bold text-red-300";
+      }
+
+      // si ya están todas, muestra código final
+      if (collected.length === questions.length) {
+        showFinalCode();
+      }
+    }
+
+    function nextQuestion() {
+      current = (current + 1) % questions.length;
+      loadQuestion();
+    }
+
+    function restartGame() {
+      current = 0;
+      collected.length = 0;
+      loadQuestion();
+    }
+
+    function showFinalCode() {
+      // ordena por índice para respetar el orden de piezas
+      const ordered = collected.slice().sort((a,b) => a - b).map(i => codePieces[i]).join("");
+      finalCodeEl.textContent = ordered;
+      finalEl.classList.remove("hidden");
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
