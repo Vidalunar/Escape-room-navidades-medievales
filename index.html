@@ -2,194 +2,502 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Escape Room de Navidad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escape Room · Navidades Medievales</title>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body class="bg-gradient-to-br from-slate-900 via-indigo-900 to-emerald-900 min-h-screen flex flex-col items-center text-white relative">
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-emerald-950 text-white relative">
 
-  <!-- SELLO (debe estar en la misma carpeta que index.html) -->
+  <!-- SELLO -->
   <img
     src="pr-sello.png"
     alt="Sello Patricia Romero Educación"
     class="absolute top-4 left-4 w-20 md:w-28 drop-shadow-lg opacity-95"
   />
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="max-w-4xl w-full px-4 pt-24 pb-10 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 mb-6">
-      <span class="text-xl">🎄</span>
-      <span class="text-sm md:text-base text-white/90">Escape Room de Navidad</span>
-    </div>
-
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
-      Misión: Salvar la Navidad
-    </h1>
-
-    <p class="text-base md:text-lg text-white/80 mb-8">
-      Resuelve los retos. Cada acierto te acerca al código final.
-    </p>
-
-    <!-- TARJETA -->
-    <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
-      <div class="text-sm text-white/70 mb-2" id="progress">Reto 1 de 3</div>
-
-      <div id="question" class="text-2xl md:text-3xl font-semibold mb-6">
-        Cargando reto...
+  <main class="max-w-5xl mx-auto px-4 pt-24 pb-16">
+    <!-- Header -->
+    <header class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 mb-5">
+        <span class="text-xl">🎄</span>
+        <span class="text-sm md:text-base text-white/90">Escape Room · Navidades Medievales</span>
       </div>
 
-      <div id="options" class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-        <!-- JS genera las opciones -->
-      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
+        El Candado del Invierno
+      </h1>
+      <p class="text-base md:text-lg text-white/80 max-w-3xl mx-auto">
+        Superad las 4 pruebas. En cada una obtendréis un código. Con los cuatro códigos abriréis el candado final.
+      </p>
+    </header>
 
-      <div id="message" class="mt-6 text-xl font-bold"></div>
-
-      <div class="mt-8 flex flex-col md:flex-row items-center justify-center gap-3">
-        <button
-          onclick="nextQuestion()"
-          class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-base md:text-lg rounded-xl shadow-lg transition">
-          Siguiente reto
-        </button>
-
-        <button
-          onclick="restartGame()"
-          class="px-6 py-3 bg-white/10 hover:bg-white/15 border border-white/15 text-base md:text-lg rounded-xl shadow-lg transition">
-          Reiniciar
-        </button>
-      </div>
-    </section>
-
-    <!-- CÓDIGO FINAL -->
-    <section id="final" class="hidden mt-8 bg-white/10 border border-white/15 rounded-2xl p-6 shadow-2xl">
-      <h2 class="text-2xl md:text-3xl font-bold mb-3">🎁 Código final</h2>
+    <!-- Pistas graduadas -->
+    <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl mb-8">
+      <h2 class="text-2xl font-bold mb-3">🏠 Pistas (para no bloquearse)</h2>
       <p class="text-white/80 mb-4">
-        Une las piezas conseguidas en cada reto (en orden). Ese es el código para abrir el “regalo”.
+        “No es un juego de adivinar. Todas las pistas están escritas. Si leéis bien la regla, el código sale solo.”
       </p>
-      <div class="text-4xl font-black tracking-widest bg-black/30 rounded-xl py-4" id="finalCode">
-        ----
-      </div>
-      <p class="text-sm text-white/70 mt-4">
-        Consejo: Si quieres, puedes cambiar las piezas del código en el array <code>codePieces</code>.
-      </p>
+      <ul class="text-white/80 space-y-2">
+        <li><span class="font-semibold">🔹 Pista 1:</span> Leed la regla otra vez.</li>
+        <li><span class="font-semibold">🔹 Pista 2:</span> ¿Cuántos verdaderos hay?</li>
+        <li><span class="font-semibold">🔹 Pista 3:</span> ¿Qué número sale si V=1?</li>
+      </ul>
     </section>
 
-    <p class="text-xs md:text-sm text-white/60 mt-8">
-      Si ves 404 en GitHub Pages, casi siempre es porque no existía <strong>index.html</strong> en la raíz del repo.
-    </p>
+    <!-- Contenedor de pruebas -->
+    <div class="grid gap-6">
+
+      <!-- PRUEBA 1 -->
+      <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-2xl font-bold">🧩 Prueba 1 · La ciudad en caos</h3>
+            <p class="text-white/80 mt-1">📜 Contexto: La ciudad teme disturbios durante la Navidad.</p>
+          </div>
+          <div class="text-sm text-white/80 bg-black/20 border border-white/10 rounded-xl px-4 py-2">
+            Código obtenido: <span id="code1Badge" class="font-bold text-white">—</span>
+          </div>
+        </div>
+
+        <div class="bg-black/20 border border-white/10 rounded-xl p-4 md:p-5 mb-4">
+          <p class="font-semibold mb-2">🔢 Regla del código</p>
+          <p class="text-white/80">Cuenta cuántas respuestas son <span class="font-semibold">VERDADERAS</span>. Ese número es el código.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">1. En Navidad aumentaban las peleas.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="1" data-q="1" data-val="V">V</button>
+              <button class="tf-btn" data-test="1" data-q="1" data-val="F">F</button>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">2. Se reforzaba la vigilancia urbana.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="1" data-q="2" data-val="V">V</button>
+              <button class="tf-btn" data-test="1" data-q="2" data-val="F">F</button>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">3. Era una época tranquila y silenciosa.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="1" data-q="3" data-val="V">V</button>
+              <button class="tf-btn" data-test="1" data-q="3" data-val="F">F</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-col md:flex-row items-center gap-3">
+          <button onclick="checkTest(1)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-semibold w-full md:w-auto">
+            Comprobar prueba 1
+          </button>
+          <div id="msg1" class="text-white/90 font-semibold"></div>
+        </div>
+      </section>
+
+      <!-- PRUEBA 2 -->
+      <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-2xl font-bold">🧩 Prueba 2 · Fiestas prohibidas</h3>
+            <p class="text-white/80 mt-1">📜 Contexto: Algunas fiestas eran mal vistas por la Iglesia.</p>
+          </div>
+          <div class="text-sm text-white/80 bg-black/20 border border-white/10 rounded-xl px-4 py-2">
+            Código obtenido: <span id="code2Badge" class="font-bold text-white">—</span>
+          </div>
+        </div>
+
+        <div class="bg-black/20 border border-white/10 rounded-xl p-4 md:p-5 mb-4">
+          <p class="font-semibold mb-2">🔢 Regla del código</p>
+          <p class="text-white/80">VERDADERO = 1 · FALSO = 0 · Escribe el número en orden.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">1. Se burlaban de sacerdotes.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="2" data-q="1" data-val="V">V</button>
+              <button class="tf-btn" data-test="2" data-q="1" data-val="F">F</button>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">2. La Iglesia prohibía toda diversión.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="2" data-q="2" data-val="V">V</button>
+              <button class="tf-btn" data-test="2" data-q="2" data-val="F">F</button>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">3. Emborracharse estaba aceptado.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="2" data-q="3" data-val="V">V</button>
+              <button class="tf-btn" data-test="2" data-q="3" data-val="F">F</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-col md:flex-row items-center gap-3">
+          <button onclick="checkTest(2)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-semibold w-full md:w-auto">
+            Comprobar prueba 2
+          </button>
+          <div id="msg2" class="text-white/90 font-semibold"></div>
+        </div>
+      </section>
+
+      <!-- PRUEBA 3 -->
+      <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-2xl font-bold">🧩 Prueba 3 · El mundo al revés</h3>
+            <p class="text-white/80 mt-1">📜 Contexto: En Navidad se rompía el orden social.</p>
+          </div>
+          <div class="text-sm text-white/80 bg-black/20 border border-white/10 rounded-xl px-4 py-2">
+            Código obtenido: <span id="code3Badge" class="font-bold text-white">—</span>
+          </div>
+        </div>
+
+        <div class="bg-black/20 border border-white/10 rounded-xl p-4 md:p-5 mb-4">
+          <p class="font-semibold mb-2">🔢 Regla del código</p>
+          <p class="text-white/80">Cada respuesta correcta suma 1 punto. Total de puntos = código.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">1. Existía la Fiesta de los Locos.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="3" data-q="1" data-val="V">V</button>
+              <button class="tf-btn" data-test="3" data-q="1" data-val="F">F</button>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">2. Preocupaba a reyes y obispos.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="3" data-q="2" data-val="V">V</button>
+              <button class="tf-btn" data-test="3" data-q="2" data-val="F">F</button>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">3. Era una fiesta familiar.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="3" data-q="3" data-val="V">V</button>
+              <button class="tf-btn" data-test="3" data-q="3" data-val="F">F</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-col md:flex-row items-center gap-3">
+          <button onclick="checkTest(3)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-semibold w-full md:w-auto">
+            Comprobar prueba 3
+          </button>
+          <div id="msg3" class="text-white/90 font-semibold"></div>
+        </div>
+      </section>
+
+      <!-- PRUEBA 4 -->
+      <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-2xl font-bold">🧩 Prueba 4 · El juicio final</h3>
+            <p class="text-white/80 mt-1">📜 Contexto: Las autoridades deciden si sois culpables.</p>
+          </div>
+          <div class="text-sm text-white/80 bg-black/20 border border-white/10 rounded-xl px-4 py-2">
+            Código obtenido: <span id="code4Badge" class="font-bold text-white">—</span>
+          </div>
+        </div>
+
+        <div class="bg-black/20 border border-white/10 rounded-xl p-4 md:p-5 mb-4">
+          <p class="font-semibold mb-2">🔢 Regla del código</p>
+          <p class="text-white/80">Suma los VERDADEROS y resta los FALSOS. El resultado es el código.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">1. Algunos protestantes odiaban la Navidad.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="4" data-q="1" data-val="V">V</button>
+              <button class="tf-btn" data-test="4" data-q="1" data-val="F">F</button>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">2. En Inglaterra se prohibió.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="4" data-q="2" data-val="V">V</button>
+              <button class="tf-btn" data-test="4" data-q="2" data-val="F">F</button>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p class="text-lg">3. La Navidad actual es medieval.</p>
+            <div class="flex gap-2">
+              <button class="tf-btn" data-test="4" data-q="3" data-val="V">V</button>
+              <button class="tf-btn" data-test="4" data-q="3" data-val="F">F</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-col md:flex-row items-center gap-3">
+          <button onclick="checkTest(4)" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 shadow-lg transition font-semibold w-full md:w-auto">
+            Comprobar prueba 4
+          </button>
+          <div id="msg4" class="text-white/90 font-semibold"></div>
+        </div>
+      </section>
+
+      <!-- CANDADO FINAL -->
+      <section class="bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
+        <h3 class="text-2xl font-bold mb-2">🔒 Candado final</h3>
+        <p class="text-white/80 mb-4">
+          Introduce los cuatro códigos en orden. Puedes escribirlos con guiones (2-101-3-1) o sin espacios (210131).
+        </p>
+
+        <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+          <input
+            id="lockInput"
+            type="text"
+            placeholder="Ej: 2-101-3-1"
+            class="w-full md:w-80 px-4 py-3 rounded-xl text-slate-900 font-semibold"
+          />
+          <button
+            onclick="openLock()"
+            class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold shadow-lg transition"
+          >
+            Abrir candado
+          </button>
+          <button
+            onclick="resetAll()"
+            class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 font-semibold shadow-lg transition"
+          >
+            Reiniciar todo
+          </button>
+        </div>
+
+        <div id="lockStatus" class="mt-5 text-lg font-bold"></div>
+
+        <div class="mt-6 bg-black/20 border border-white/10 rounded-xl p-4">
+          <p class="text-sm text-white/70">
+            Códigos conseguidos:
+            <span class="font-semibold text-white" id="codesSummary">Prueba 1: — · Prueba 2: — · Prueba 3: — · Prueba 4: —</span>
+          </p>
+        </div>
+      </section>
+
+    </div>
   </main>
 
+  <style>
+    .tf-btn{
+      @apply px-4 py-2 rounded-xl font-extrabold bg-white/10 border border-white/15 hover:bg-white/15 transition min-w-[56px];
+    }
+    .tf-btn.selected{
+      @apply bg-emerald-500 border-emerald-300 text-slate-950;
+    }
+  </style>
+
   <script>
-    // Puedes cambiar las piezas del código final aquí:
-    const codePieces = ["N", "A", "V", "I"]; // Ejemplo: NAVI
+    // Respuestas correctas (NO se muestran al alumnado)
+    const answers = {
+      1: { 1: "V", 2: "V", 3: "F" }, // Código 2
+      2: { 1: "V", 2: "F", 3: "V" }, // Código 101
+      3: { 1: "V", 2: "V", 3: "F" }, // 3 aciertos -> código 2? (OJO: aquí queremos 3, por tanto todas correctas)
+      4: { 1: "V", 2: "V", 3: "F" }  // 2V - 1F = 1
+    };
 
-    const questions = [
-      {
-        question: "Reto 1: ¿Qué país se asocia con San Nicolás (origen de Santa Claus)?",
-        answer: "Países Bajos",
-        options: [
-          { name: "España", emoji: "🇪🇸" },
-          { name: "Países Bajos", emoji: "🇳🇱" },
-          { name: "Japón", emoji: "🇯🇵" }
-        ],
-        pieceIndex: 0
+    // Ajuste para que la Prueba 3 sea "3 aciertos" tal y como pides:
+    // (Si quieres cambiarlo, modifica este bloque.)
+    answers[3] = { 1: "V", 2: "V", 3: "V" }; // 3 aciertos -> código 3
+
+    // Códigos objetivo
+    const targetCodes = { 1: "2", 2: "101", 3: "3", 4: "1" };
+
+    // Estado
+    const state = {
+      selections: {
+        1: {}, 2: {}, 3: {}, 4: {}
       },
-      {
-        question: "Reto 2: ¿Qué día se celebra la Nochebuena?",
-        answer: "24 de diciembre",
-        options: [
-          { name: "31 de diciembre", emoji: "🎆" },
-          { name: "24 de diciembre", emoji: "🕯️" },
-          { name: "6 de enero", emoji: "👑" }
-        ],
-        pieceIndex: 1
-      },
-      {
-        question: "Reto 3: ¿Qué bebida caliente es típica en Navidad en muchos países?",
-        answer: "Chocolate caliente",
-        options: [
-          { name: "Gazpacho", emoji: "🥣" },
-          { name: "Chocolate caliente", emoji: "☕" },
-          { name: "Limonada", emoji: "🍋" }
-        ],
-        pieceIndex: 2
+      solvedCodes: {
+        1: null, 2: null, 3: null, 4: null
       }
-    ];
+    };
 
-    let current = 0;
-    const collected = [];
+    // UI helpers
+    function updateSummary(){
+      const s = document.getElementById("codesSummary");
+      s.textContent = `Prueba 1: ${state.solvedCodes[1] ?? "—"} · Prueba 2: ${state.solvedCodes[2] ?? "—"} · Prueba 3: ${state.solvedCodes[3] ?? "—"} · Prueba 4: ${state.solvedCodes[4] ?? "—"}`;
+    }
 
-    const questionEl = document.getElementById("question");
-    const optionsEl  = document.getElementById("options");
-    const messageEl  = document.getElementById("message");
-    const progressEl = document.getElementById("progress");
-    const finalEl    = document.getElementById("final");
-    const finalCodeEl= document.getElementById("finalCode");
+    function setBadge(testId, code){
+      document.getElementById(`code${testId}Badge`).textContent = code ?? "—";
+      updateSummary();
+    }
 
-    function loadQuestion() {
-      finalEl.classList.add("hidden");
-      messageEl.textContent = "";
-      messageEl.className = "mt-6 text-xl font-bold";
+    // Botones V/F: seleccionar y marcar visualmente
+    document.querySelectorAll(".tf-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const testId = btn.dataset.test;
+        const q = btn.dataset.q;
+        const val = btn.dataset.val;
 
-      const q = questions[current];
-      progressEl.textContent = `Reto ${current + 1} de ${questions.length}`;
-      questionEl.textContent = q.question;
+        // Guardar selección
+        state.selections[testId][q] = val;
 
-      optionsEl.innerHTML = "";
-      q.options.forEach(opt => {
-        const btn = document.createElement("button");
-        btn.className =
-          "bg-white text-gray-900 rounded-2xl p-4 md:p-6 text-4xl md:text-5xl shadow-xl hover:scale-[1.03] transition flex flex-col items-center";
-        btn.innerHTML = `<span>${opt.emoji}</span><span class="text-base md:text-lg mt-2">${opt.name}</span>`;
-        btn.onclick = () => checkAnswer(opt.name);
-        optionsEl.appendChild(btn);
+        // Quitar selected de los hermanos (V/F del mismo ítem)
+        const siblings = document.querySelectorAll(`.tf-btn[data-test="${testId}"][data-q="${q}"]`);
+        siblings.forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
       });
-    }
+    });
 
-    function checkAnswer(selected) {
-      const q = questions[current];
+    function checkTest(testId){
+      const msg = document.getElementById(`msg${testId}`);
+      msg.textContent = "";
+      msg.className = "text-white/90 font-semibold";
 
-      if (selected === q.answer) {
-        messageEl.textContent = `✅ Correcto. Has ganado la pieza: "${codePieces[q.pieceIndex]}"`;
-        messageEl.className = "mt-6 text-xl font-bold text-emerald-300";
+      // Verificar que están todas respondidas (3 preguntas por prueba)
+      for (let q=1; q<=3; q++){
+        if (!state.selections[testId][q]){
+          msg.textContent = "⚠️ Responde V/F en las 3 afirmaciones antes de comprobar.";
+          msg.className = "text-amber-300 font-bold";
+          return;
+        }
+      }
 
-        // guarda pieza si no estaba
-        if (!collected.includes(q.pieceIndex)) collected.push(q.pieceIndex);
+      // Calcular código según regla
+      let code = "";
 
+      if (testId === 1){
+        // Cuenta verdaderos correctos (según respuestas correctas)
+        let correctTrueCount = 0;
+        for (let q=1; q<=3; q++){
+          const isCorrect = state.selections[testId][q] === answers[testId][q];
+          if (isCorrect && answers[testId][q] === "V") correctTrueCount++;
+        }
+        code = String(correctTrueCount);
+      }
+
+      if (testId === 2){
+        // V=1, F=0 según acierto/fallo? Aquí debe ser según si la afirmación es verdadera en realidad.
+        // Por tanto, convertimos la "verdad real" (answers) a 1/0, independientemente de lo que elijan.
+        // Pero deben acertar el patrón eligiendo V/F correcto. Si fallan, no se concede código.
+        let allCorrect = true;
+        let bits = "";
+        for (let q=1; q<=3; q++){
+          if (state.selections[testId][q] !== answers[testId][q]) allCorrect = false;
+          bits += (answers[testId][q] === "V") ? "1" : "0";
+        }
+        code = bits;
+        if (!allCorrect){
+          msg.textContent = "❌ Algunas respuestas no son correctas. Revisa y vuelve a intentar.";
+          msg.className = "text-red-300 font-bold";
+          return;
+        }
+      }
+
+      if (testId === 3){
+        // Puntos = nº de aciertos
+        let points = 0;
+        for (let q=1; q<=3; q++){
+          if (state.selections[testId][q] === answers[testId][q]) points++;
+        }
+        code = String(points);
+      }
+
+      if (testId === 4){
+        // Suma V correctos y resta F correctos -> equivale a (Vcorrect - Fcorrect) si todo está correcto.
+        // En tu ejemplo: 2V-1F = 1. Para mantenerlo pedagógico: solo damos código si todo correcto.
+        let allCorrect = true;
+        let trueCount = 0;
+        let falseCount = 0;
+
+        for (let q=1; q<=3; q++){
+          if (state.selections[testId][q] !== answers[testId][q]) allCorrect = false;
+          if (answers[testId][q] === "V") trueCount++;
+          else falseCount++;
+        }
+
+        code = String(trueCount - falseCount);
+
+        if (!allCorrect){
+          msg.textContent = "❌ Hay respuestas incorrectas. Revisa y vuelve a intentar.";
+          msg.className = "text-red-300 font-bold";
+          return;
+        }
+      }
+
+      // Validación final del código con el objetivo esperado
+      if (code === targetCodes[testId]){
+        state.solvedCodes[testId] = code;
+        setBadge(testId, code);
+        msg.textContent = `✅ Prueba superada. Código obtenido: ${code}`;
+        msg.className = "text-emerald-300 font-bold";
       } else {
-        messageEl.textContent = "❌ Intenta de nuevo";
-        messageEl.className = "mt-6 text-xl font-bold text-red-300";
-      }
-
-      // si ya están todas, muestra código final
-      if (collected.length === questions.length) {
-        showFinalCode();
+        msg.textContent = "❌ El código no coincide. Revisa la regla y las respuestas.";
+        msg.className = "text-red-300 font-bold";
       }
     }
 
-    function nextQuestion() {
-      current = (current + 1) % questions.length;
-      loadQuestion();
+    function normalizeLockInput(str){
+      return str.replace(/\s+/g, "").replace(/-/g, "");
     }
 
-    function restartGame() {
-      current = 0;
-      collected.length = 0;
-      loadQuestion();
+    function openLock(){
+      const status = document.getElementById("lockStatus");
+      status.textContent = "";
+
+      // Exigimos que hayan superado las 4 pruebas
+      const missing = Object.values(state.solvedCodes).some(v => v === null);
+      if (missing){
+        status.textContent = "⚠️ Aún faltan códigos. Supera las 4 pruebas antes de abrir el candado.";
+        status.className = "mt-5 text-amber-300 text-lg font-bold";
+        return;
+      }
+
+      const input = document.getElementById("lockInput").value;
+      const normalized = normalizeLockInput(input);
+
+      const correct = normalizeLockInput("2-101-3-1"); // 210131
+
+      if (normalized === correct){
+        status.textContent = "🎉 Enhorabuena, lo has conseguido. El candado se abre.";
+        status.className = "mt-5 text-emerald-300 text-lg font-extrabold";
+      } else {
+        status.textContent = "❌ El candado no se abre. Revisa el orden de los códigos.";
+        status.className = "mt-5 text-red-300 text-lg font-bold";
+      }
     }
 
-    function showFinalCode() {
-      // ordena por índice para respetar el orden de piezas
-      const ordered = collected.slice().sort((a,b) => a - b).map(i => codePieces[i]).join("");
-      finalCodeEl.textContent = ordered;
-      finalEl.classList.remove("hidden");
+    function resetAll(){
+      // reset estado
+      state.selections = { 1: {}, 2: {}, 3: {}, 4: {} };
+      state.solvedCodes = { 1: null, 2: null, 3: null, 4: null };
+
+      // reset UI selections
+      document.querySelectorAll(".tf-btn").forEach(b => b.classList.remove("selected"));
+
+      // reset badges & messages
+      for (let i=1; i<=4; i++){
+        document.getElementById(`msg${i}`).textContent = "";
+        setBadge(i, null);
+      }
+
+      document.getElementById("lockInput").value = "";
+      const status = document.getElementById("lockStatus");
+      status.textContent = "";
+      status.className = "mt-5 text-lg font-bold";
     }
 
-    loadQuestion();
+    // init summary
+    updateSummary();
   </script>
-
 </body>
 </html>
